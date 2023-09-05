@@ -1,0 +1,34 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+node_modules/
+
+# Optional: OS generated files
+.DS_Store
+Thumbs.db
+
+# Optional: Editor/IDE specific files
+.vscode/
+.idea/
+
+# Optional: Output of built files
+build/
+dist/
+
+# Optional: Environment configuration
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Optional: Production dependencies
+package-lock.json
+
+# Optional: Debugging tools
+*.swp
