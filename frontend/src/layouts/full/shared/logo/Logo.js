@@ -11,7 +11,7 @@ const LinkStyled = styled(Link)(() => ({
 
 const Logo = () => {
     return (
-        <LinkStyled to="/">
+        <LinkStyled to="/dashboard">
             <Typography fontWeight={900} variant="h3" mt={4} ml={2}>
                 HOTEL MIS
             </Typography>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CustomTextField from "../../../components/forms/theme-elements/CustomTextField";
 import { useDispatch } from "react-redux";
 import {
@@ -17,12 +17,12 @@ import { login, logout } from "src/redux/userSlice";
 
 const AuthLogin = ({ title, subtitle, subtext }) => {
    const dispatch = useDispatch();
+   const navigate = useNavigate()
 
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
    const [errorText, setError] = useState("");
 
-   const navigate = useNavigate(); // Get the navigate function
 
    // call login api
    async function handleLogin() {
@@ -43,8 +43,8 @@ const AuthLogin = ({ title, subtitle, subtext }) => {
    }
 
    useEffect(() => {
-      if (window.localStorage.getItem("token")?.length > 0) {
-         return <Navigate to={"/dashboard"} />;
+      if (window.localStorage.getItem("token") != null) {
+         navigate("/dashboard");
       }
    }, []);
 

@@ -9,8 +9,6 @@ import { parameter } from "./config/parameters";
 import axios from "axios";
 import { login } from "./redux/userSlice";
 
-const theme = createTheme(generatePalette("light"));
-
 function App() {
    const [isAuthenticated, setAuthenticated] = useState(
       window.localStorage.getItem("token")?.length > 0,
@@ -28,6 +26,8 @@ function App() {
          retrieveLoggedUser();
       }
    }, [token]);
+
+   const theme = createTheme(generatePalette("light"));
 
    async function retrieveLoggedUser() {
       const { data } = await axios.get(parameter.SERVER_URL + "/api/auth", {
