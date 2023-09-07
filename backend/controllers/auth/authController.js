@@ -35,6 +35,15 @@ class AuthController {
       return res.status(500).json({ message: "Server error" });
     }
   }
+
+  getCurrentAuth(req, res) {
+    try {
+      const { password, ...userWithoutPassword } = req.user;
+      return res.json(userWithoutPassword);
+    } catch (error) {
+      return res.json(error.message);
+    }
+  }
 }
 
 module.exports = new AuthController();
