@@ -1,6 +1,10 @@
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import Router from "./routes/Router";
 
+// toastify
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 // import { baselightTheme } from "./theme/DefaultColors";
 import { generatePalette } from "./theme/getPallete";
 import { useEffect, useState } from "react";
@@ -40,6 +44,8 @@ function App() {
       <ThemeProvider theme={theme}>
          <CssBaseline />
          <Router authVerify={isAuthenticated} />
+         {/* initialise toastify */}
+         <ToastContainer position="top-right" autoClose={3000} />
       </ThemeProvider>
    );
 }

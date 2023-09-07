@@ -17,12 +17,11 @@ import { login, logout } from "src/redux/userSlice";
 
 const AuthLogin = ({ title, subtitle, subtext }) => {
    const dispatch = useDispatch();
-   const navigate = useNavigate()
+   const navigate = useNavigate();
 
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
    const [errorText, setError] = useState("");
-
 
    // call login api
    async function handleLogin() {
@@ -35,7 +34,7 @@ const AuthLogin = ({ title, subtitle, subtext }) => {
          //   set token to local storage
          window.localStorage.setItem("token", data?.token);
          setError("");
-         navigate("/dashboard");
+         window.location = "/dashboard";
       } catch (err) {
          dispatch(logout());
          setError(handleError(err));
