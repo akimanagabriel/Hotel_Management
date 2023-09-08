@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import Profile from "./Profile";
 import { IconBellRinging, IconMenu } from "@tabler/icons";
 import { useSelector } from "react-redux";
+import ChangeTheme from "src/theme/ChangeTheme";
 
 const Header = (props) => {
    const user = useSelector((state) => state?.auth.user);
@@ -57,6 +58,9 @@ const Header = (props) => {
                   <IconBellRinging size="21" stroke="1.5" />
                </Badge>
             </IconButton>
+
+            <ChangeTheme/>
+
             <Box flexGrow={1} />
             <Stack spacing={1} direction="row" alignItems="center">
                {user && (

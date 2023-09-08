@@ -13,6 +13,7 @@ function MuiDataTable({ rows, columns }) {
       <div style={{ height: "auto", width: "100%" }}>
          <div style={{ width: "100%" }}>
             <DataGrid
+               density="compact"
                slots={{ toolbar: GridToolbar }}
                rows={rowsWithIndex}
                columns={columns}
