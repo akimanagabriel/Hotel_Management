@@ -54,7 +54,9 @@ const Profile = ({ user }) => {
                   bgcolor: blue[700],
                }}
             >
-               {user && <Typography>{user.lastName[0] || user.firstName[0]}</Typography>}
+               {user && (
+                  <Typography>{(user.lastName[0] || user.firstName[0]).toUpperCase()}</Typography>
+               )}
             </Avatar>
          </IconButton>
          {/* ------------------------------------------- */}

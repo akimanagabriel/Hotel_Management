@@ -10,8 +10,11 @@ const allUsersSlice = createSlice({
       appendUser: (state, action) => {
          state.data.unshift(action.payload);
       },
+      deleteUser: (state, action) => {
+         state.data = state.data.filter((user) => user.id !== action.payload);
+      },
    },
 });
 
 export const allUserReducer = allUsersSlice.reducer;
-export const { setUsers, appendUser } = allUsersSlice.actions;
+export const { setUsers, appendUser,deleteUser } = allUsersSlice.actions;

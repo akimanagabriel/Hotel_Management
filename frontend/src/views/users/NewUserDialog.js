@@ -6,7 +6,16 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { IconDeviceFloppy, IconUserPlus } from "@tabler/icons";
 import { LoadingButton } from "@mui/lab";
-import { Box, MenuItem, Select, Stack, TextField } from "@mui/material";
+import {
+   Box,
+   MenuItem,
+   Select,
+   Stack,
+   TextField,
+   Typography,
+   useMediaQuery,
+   useTheme,
+} from "@mui/material";
 import { toast } from "react-toastify";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -61,6 +70,9 @@ export default function NewUserDialog() {
       setSubmitting(false);
    };
 
+   const theme = useTheme();
+   const isSmall = useMediaQuery(theme.breakpoints.down("sm"));
+
    return (
       <div>
          <Button
@@ -78,7 +90,7 @@ export default function NewUserDialog() {
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
             fullWidth
-            maxWidth="xs"
+            maxWidth={isSmall ? "100%" : "xs"}
          >
             <DialogTitle id="alert-dialog-title">{"Create a new user"}</DialogTitle>
             <DialogContent>
@@ -100,7 +112,7 @@ export default function NewUserDialog() {
                               />
                               <ErrorMessage
                                  name="firstName"
-                                 render={(msg) => <div style={{ color: "red" }}>{msg}</div>}
+                                 render={(msg) => <Typography color={"error"}>{msg}</Typography>}
                               />
                            </Box>
 
@@ -114,7 +126,7 @@ export default function NewUserDialog() {
                               />
                               <ErrorMessage
                                  name="lastName"
-                                 render={(msg) => <div style={{ color: "red" }}>{msg}</div>}
+                                 render={(msg) => <Typography color={"error"}>{msg}</Typography>}
                               />
                            </Box>
 
@@ -128,7 +140,7 @@ export default function NewUserDialog() {
                               />
                               <ErrorMessage
                                  name="email"
-                                 render={(msg) => <div style={{ color: "red" }}>{msg}</div>}
+                                 render={(msg) => <Typography color={"error"}>{msg}</Typography>}
                               />
                            </Box>
 
@@ -143,7 +155,7 @@ export default function NewUserDialog() {
                               />
                               <ErrorMessage
                                  name="password"
-                                 render={(msg) => <div style={{ color: "red" }}>{msg}</div>}
+                                 render={(msg) => <Typography color={"error"}>{msg}</Typography>}
                               />
                            </Box>
 
@@ -156,12 +168,14 @@ export default function NewUserDialog() {
                                  fullWidth
                               >
                                  <MenuItem value={"Super Admin"}>Super Admin</MenuItem>
-                                 <MenuItem value={"Admin"}>Admin</MenuItem>
+                                 <MenuItem selected value={"Admin"}>
+                                    Admin
+                                 </MenuItem>
                                  <MenuItem value={"Manager"}>Manager</MenuItem>
                               </Field>
                               <ErrorMessage
                                  name="userType"
-                                 render={(msg) => <div style={{ color: "red" }}>{msg}</div>}
+                                 render={(msg) => <Typography color={"error"}>{msg}</Typography>}
                               />
                            </Box>
                         </Stack>

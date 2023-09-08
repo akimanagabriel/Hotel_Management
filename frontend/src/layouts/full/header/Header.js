@@ -1,5 +1,15 @@
 import React from "react";
-import { Box, AppBar, Toolbar, styled, Stack, IconButton, Badge, Typography } from "@mui/material";
+import {
+   Box,
+   AppBar,
+   Toolbar,
+   styled,
+   Stack,
+   IconButton,
+   Badge,
+   Typography,
+   Tooltip,
+} from "@mui/material";
 import PropTypes from "prop-types";
 
 // components
@@ -20,6 +30,7 @@ const Header = (props) => {
          minHeight: "70px",
       },
    }));
+
    const ToolbarStyled = styled(Toolbar)(({ theme }) => ({
       width: "100%",
       color: theme.palette.text.secondary,
@@ -28,38 +39,43 @@ const Header = (props) => {
    return (
       <AppBarStyled position="sticky" color="default">
          <ToolbarStyled>
-            <IconButton
-               color="inherit"
-               aria-label="menu"
-               onClick={props.toggleMobileSidebar}
-               sx={{
-                  display: {
-                     lg: "none",
-                     xs: "inline",
-                  },
-               }}
-            >
-               <IconMenu width="20" height="20" />
-            </IconButton>
+            <Tooltip title="Menu">
+               <IconButton
+                  color="inherit"
+                  aria-label="menu"
+                  onClick={props.toggleMobileSidebar}
+                  sx={{
+                     display: {
+                        lg: "none",
+                        xs: "inline",
+                     },
+                  }}
+               >
+                  <IconMenu width="20" height="20" />
+               </IconButton>
+            </Tooltip>
 
-            <IconButton
-               size="large"
-               aria-label="show 11 new notifications"
-               color="inherit"
-               aria-controls="msgs-menu"
-               aria-haspopup="true"
-               sx={{
-                  ...(typeof anchorEl2 === "object" && {
-                     color: "primary.main",
-                  }),
-               }}
-            >
-               <Badge variant="dot" color="primary">
-                  <IconBellRinging size="21" stroke="1.5" />
-               </Badge>
-            </IconButton>
+            <Tooltip title="Notifications">
+               <IconButton
+                  size="large"
+                  aria-label="show 11 new notifications"
+                  color="inherit"
+                  aria-controls="msgs-menu"
+                  aria-haspopup="true"
+                  sx={{
+                     ...(typeof anchorEl2 === "object" && {
+                        color: "primary.main",
+                     }),
+                  }}
+               >
+                  <Badge variant="dot" color="primary">
+                     <IconBellRinging size="21" stroke="1.5" />
+                  </Badge>
+               </IconButton>
+            </Tooltip>
 
-            <ChangeTheme/>
+            {/* change theme component */}
+            <ChangeTheme />
 
             <Box flexGrow={1} />
             <Stack spacing={1} direction="row" alignItems="center">

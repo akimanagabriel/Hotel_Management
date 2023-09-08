@@ -17,9 +17,16 @@ function MuiDataTable({ rows, columns }) {
                slots={{ toolbar: GridToolbar }}
                rows={rowsWithIndex}
                columns={columns}
-               pageSize={5} // Number of rows per page
+               initialState={{
+                  pagination: {
+                     paginationModel: {
+                        pageSize: 10,
+                     },
+                  },
+               }}
+               pageSizeOptions={[10, 20, 30, 40, 50, 60, 70, 80, 90, 100]}
                checkboxSelection // Add checkboxes for row selection
-               disableSelectionOnClick // Prevent selecting rows on cell click
+               disableRowSelectionOnClick // Prevent selecting rows on cell click
             />
          </div>
       </div>

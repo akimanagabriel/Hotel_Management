@@ -1,7 +1,5 @@
 const prisma = require("../config/prismaClient");
 
-
-
 class UserController {
   // index
   async index(req, res) {
@@ -45,7 +43,7 @@ class UserController {
   // view a single user
   async show(req, res) {
     try {
-      const userId = parseInt(req.params.id);
+      const userId = req.params.id;
       const user = await prisma.user.findUnique({
         where: { id: userId },
       });
@@ -64,7 +62,7 @@ class UserController {
   //   update user
   async update(req, res) {
     try {
-      const id = parseInt(req.params.id);
+      const id = req.params.id;
       const updatedUser = await prisma.user.update({
         where: { id },
         data: req.body,
@@ -86,23 +84,19 @@ class UserController {
     try {
       // Check if the user exists before attempting to delete
       const existingUser = await prisma.user.findUnique({
-        where: { id: parseInt(id) },
+        where: { id },
       });
 
       if (!existingUser) {
         return res.status(404).json({ message: "User not found" });
       }
-
       // Delete the user
-      await prisma.user.delete({ where: { id: parseInt(id) } });
+      await prisma.user.delete({ where: { id } });
 
       // Return a success message or appropriate response
       return res.json({ message: "User deleted successfully" });
     } catch (err) {
-      console.error(err);
-      return res
-        .status(500)
-        .json({ message: "An error occurred while deleting the user." });
+      return res.status(500).json({ message: "Failed to delete a user " });
     }
   }
 }

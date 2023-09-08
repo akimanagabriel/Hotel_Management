@@ -9,7 +9,6 @@ const Icons = () => {
             <iframe
                src="https://tabler-icons.io/"
                title="Inline Frame Example"
-               frameBorder={0}
                width="100%"
                height="650"
             ></iframe>

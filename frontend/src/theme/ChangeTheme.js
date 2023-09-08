@@ -1,7 +1,7 @@
 import React from "react";
 import { IconMoon } from "@tabler/icons-react";
 import { IconSunHigh } from "@tabler/icons-react";
-import { IconButton, useTheme } from "@mui/material";
+import { IconButton, Tooltip, useTheme } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { changeMode } from "src/redux/themeSlice";
 
@@ -24,9 +24,15 @@ function ChangeTheme() {
          }}
       >
          {theme.palette.mode === "dark" ? (
-            <IconSunHigh size="21" stroke="1.5" />
+            <Tooltip title="Light mode">
+               <IconSunHigh size="21" stroke="1.5" />
+            </Tooltip>
+            
          ) : (
-            <IconMoon size="21" stroke="1.5" />
+            <Tooltip title="Dark mode">
+               <IconMoon size="21" stroke="1.5" />
+            </Tooltip>
+            
          )}
       </IconButton>
    );

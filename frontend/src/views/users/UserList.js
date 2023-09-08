@@ -10,6 +10,7 @@ import LoadingTableSkeleton from "src/components/skeleton/LoadingTableSkeleton";
 import NewUserDialog from "./NewUserDialog";
 import { useDispatch, useSelector } from "react-redux";
 import { setUsers } from "src/redux/allUsers";
+import UserActions from "./UserActions";
 
 const UserList = () => {
    const [loading, setLoading] = useState(true);
@@ -43,17 +44,23 @@ const UserList = () => {
 
    const columns = [
       {
-         field: "id",
+         field: "index",
          headerName: "#",
-         width: 100,
+         width: 70,
          renderCell: (params) => {
             return params.row.index + 1; // Display the row index + 1
          },
       },
-      { field: "firstName", headerName: "Firstname", width: 200 },
-      { field: "lastName", headerName: "Lastname", width: 200 },
-      { field: "email", headerName: "Email", width: 300 },
+      { field: "firstName", headerName: "Firstname", width: 170 },
+      { field: "lastName", headerName: "Lastname", width: 170 },
+      { field: "email", headerName: "Email", width: 250 },
       { field: "userType", headerName: "Role", width: 150 },
+      {
+         field: "id",
+         headerName: "Actions",
+         width: 120,
+         renderCell: (params) => <UserActions {...params} />,
+      },
    ];
 
    return (
